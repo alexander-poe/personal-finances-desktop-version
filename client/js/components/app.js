@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import { connect } from 'react-redux';
+import CheckInput from './checkInput';
 import * as actions from '../../actions/actions';
 
 class App extends Component {
@@ -10,17 +11,33 @@ class App extends Component {
   }
 
   render() {
-
-    console.log(this.props)
+    const allRenderedChecks =
+         this.props.checks ?
+            this.props.checks.checks.map((check, idx) => {
+              console.log(check.description)
+              return (
+              <div key={idx}>
+                <p>Check:{check.description}</p>
+                <p>Amount:{check.amount}</p>
+                <p>DepositedDate:{check.datedeposited}</p>
+              </div>
+              )
+            }) : null
+            console.log('here', allRenderedChecks)
     return (
-      <h2>{this.props.libraries[0]}</h2>
+      <div>
+        <CheckInput />
+        {allRenderedChecks}
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-  return { libraries: []}
+  return {
+    libraries: [],
+    checks: state.checks,
+  }
 }
 
 export default connect(mapStateToProps)(App);

@@ -6,7 +6,6 @@ export const getCheckSuccess = data => ({
 })
 
 export const getCheck = () => {
-	console.log('hi')
 	return dispatch =>  {
 		return fetch('http://localhost:8080/checks')
 			.then(res => {
