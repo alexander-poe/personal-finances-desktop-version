@@ -5,8 +5,6 @@ const initState = {
   loading: false,
 }
 
-console.log(actions.get_check_success)
-
 const checks = (state = initState, action) => {
   if (action.type === actions.get_check_success) {
     return {
@@ -14,7 +12,6 @@ const checks = (state = initState, action) => {
       checks: action.data.id
     }
   }
-  console.log(state)
   return state;
 }
 

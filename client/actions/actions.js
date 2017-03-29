@@ -6,7 +6,6 @@ export const getCheckSuccess = data => ({
 })
 
 export const getCheck = () => {
-	console.log('hi')
 	return dispatch =>  {
 		return fetch('http://localhost:8080/checks')
 			.then(res => {
@@ -22,8 +21,10 @@ export const getCheck = () => {
     }
 }
 
+export const get_check_term_success = 'get_check_term_success'
+
 export const getCheckTermSuccess = data => ({
-	type: 'get_check_term_success',
+	type: get_check_term_success,
 	data
 })
 
