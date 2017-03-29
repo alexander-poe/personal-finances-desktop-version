@@ -38,10 +38,12 @@ class TransactionInput extends Component {
 
   _sendTransaction(e) {
     e.preventDefault();
+    console.log(this.props.checkId, this.props.checkId.checkTerms[1].id)
     let checkId = 0;
     for (let i = 0; i < this.props.checkId.checkTerms.length; i++) {
       if (this.props.id === this.props.checkId.checkTerms[i].checkid) {
         checkId = this.props.checkId.checkTerms[i].id;
+        console.log(this.props.checkId.checkTerms[i].id, '45')
         console.log('checkid is ', i ,' got it')
       }
     }

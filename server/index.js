@@ -40,7 +40,13 @@ app.post('/checks', (req, res) => {
     return id
   }).then(id => {
     return knex('checks').select('id').then(id => {
-      return id[id.length-1].id;
+      let currentId = 0;
+      for (var i = 0; i < id.length; i++) {
+          if (currentId < id[i].id) {
+            currentId = id[i].id;
+          }
+      }
+      return currentId;
     })
   }).then(id => {
   knex.insert({
