@@ -9,7 +9,7 @@ class CheckInput extends Component {
       amount: '000',
       description: 'Intel',
       upload: 'photo',
-      reoccuring: true
+      reoccuring: false
     }
     this.sendCheck = this.sendCheck.bind(this);
     this._amount = this._amount.bind(this);
@@ -31,15 +31,15 @@ class CheckInput extends Component {
   }
 
   _reoccuring(e) {
-    this.setState({reoccuring: e.target.value})
+    if (e.target.value === 'on') {
+      this.setState({reoccuring: true})
+    }
   }
 
   sendCheck(e) {
-    console.log(this.state.upload)
     e.preventDefault();
     this.props.dispatch(actions.addCheck(this.state.amount, this.state.description, 'photo.png', true))
   }
-
   render() {
     return (
       <div className="checkInput">

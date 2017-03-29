@@ -69,12 +69,11 @@ app.delete('/checks', (req, res) => {
 })
 
 app.get('/checkterm', (req, res) => {
-  knex('checkterm').select('twenty', 'thirty', 'fifty', 'checkid')
+  knex('checkterm').select('id','twenty', 'thirty', 'fifty', 'checkid')
   .then(id => {
     return res.status(200).json({id})
   })
 })
-
 
 app.post('/checkterm', (req, res) => {
   knex.insert({

@@ -21,8 +21,10 @@ export const getCheck = () => {
     }
 }
 
+export const get_check_term_success = 'get_check_term_success'
+
 export const getCheckTermSuccess = data => ({
-	type: 'get_check_term_success',
+	type: get_check_term_success,
 	data
 })
 
