@@ -1,25 +1,117 @@
-# Thinkful Full Stack Template
 
-A template for developing and deploying full stack JavaScript apps.  Supports ES2015 on the client and server-side.
 
-## Getting started
 
-### Setting up a project
+## DB STRUCTURE
+  ```sql
+  CREATE TABLE Checks (
+      ID serial primary key,
+      Amount int,
+      DateDeposited DATE,
+      Description varchar(255),
+      Picture varchar(255),
+      Reoccuring BOOLEAN
+  );
 
-* Move into your projects directory: `cd ~/YOUR_PROJECTS_DIRECTORY`
-* Clone this repository: `git clone https://github.com/oampo/thinkful-full-stack-template YOUR_PROJECT_NAME`
-* Move into the project directory: `cd YOUR_PROJECT_NAME`
-* Install the dependencies: `npm install`
-* Create a new repo on GitHub: https://github.com/new
-    * Make sure the "Initialize this repository with a README" option is left **un**checked
-* Update the remote to point to your GitHub repository: `git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME`
+  CREATE TABLE CheckTerm (
+      ID serial primary key,
+      CheckID int references CHECKS(ID),
+      Twenty int,
+      Thirty int,
+      Fifty int
+  );
 
-### Working on the project
+  CREATE TABLE TermTransactions (
+      ID serial primary key,
+      CheckTermID int references CheckTerm(ID),
+      TransactionDate DATE,
+      Account varchar (255),
+      Transaction int,
+      Description varchar(255),
+      Photo varchar(255)
+  );
+```
 
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Run the development task: `npm run dev`
-    * Starts a server running at http://localhost:8080
-    * Automatically rebuilds when any of your files change
+1. Check
+
+    1. User adds payment
+      1. Amount
+      2. Picture
+      3. Description
+      3. Reoccuring (true / false)
+    2. Generated Automatically
+      1. ID
+      2. Date Deposited
+
+2. CheckTerm
+
+  1. For the current status of check amount
+  2. Check is added computer calculates
+      1. 20% of initial check
+      2. 30% of initial check
+      3. 50% of initial check
+
+
+3. Transactions
+
+  1. Adjustment is made to (Twenty / Thirty / Fifty)
+
+    1. User adds transaction
+        1. Amount
+        2. Description
+        3. Photo
+        4. Account => 20 / 30 / 50
+    2. Generated Automatically
+        1. ID
+        2. CheckTermID  
+
+## Routes
+
+1. Check
+    1. User adds check
+    2. User deletes check
+
+2. CheckTerm
+    1. Computer adds term
+    2. Computer modifies when user inputs transaction
+    3. Computer fetches CheckTerm
+
+3. Transactions
+    1. User adds transaction
+    2. User fetches transactions
+    3. User deletes transactions
+
+## TODO (feature based)   
+
+1. Photo on check
+
+2. User adds transaction
+    1. Transaction is posted to DB [x]
+    2. get checkterm amount [x]
+    3. subtract transaction from appropriate [x] checkterm ammount and modify the checkterm. [x]
+
+3. Input error handling   
+
+## Report Feature
+
+```
+
+Period | Total Income | Total Spent | Total Saved
+------------- | -------------  |
+March         | 3000.00 | 1200.00 | 2800.00
+
+TransactionID| Amount | Description | Photo
+------------- | -------------  |
+122  | 30.00 | Groceries | Photo
+123  | 20.00 | Gas | Photo
+124  | 100.00 | Insurance | Photo
+
+
+Twenty | Thirty| Fifty | Remaining
+------------- | -------------  |
+600.00       | 54.23 | 100.10 | 754.23
+
+```
+
 
 ## Directory layout
 
@@ -71,4 +163,3 @@ Requires the [Travis CLI client](https://github.com/travis-ci/travis.rb).
 ### Deploying using CD
 
 * Push your code to GitHub: `git push origin master`
-

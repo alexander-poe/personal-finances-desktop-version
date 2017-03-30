@@ -1,12 +1,19 @@
 import 'babel-polyfill';
 import express from 'express';
-require('dotenv').config()
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
-const DBURL = process.env.DBURL
+const DBURL = process.env.DBURL;
+const cloudinary = require('cloudinary');
 
 console.log(`Server running in ${process.env.NODE_ENV} mode`);
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,6 +22,16 @@ app.use(express.static(process.env.CLIENT_PATH));
 const knex = require('knex')({
   client: 'pg',
   connection: DBURL
+})
+
+app.post('/uploadPhoto', (req, res) => {
+  cloudinary.uploader.upload("./server/node.png", function(result) {
+    console.log(result)
+  });
+})
+
+app.get('/photos', (req, res) => {
+
 })
 
 app.get('/checks', (req, res) => {
@@ -26,6 +43,9 @@ app.get('/checks', (req, res) => {
 })
 
 app.post('/checks', (req, res) => {
+  cloudinary.uploader.upload('./server/node.png', function(result) {
+    return result
+  }).then(photo => {
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3
   let fifty = req.body.amount * .5
@@ -34,7 +54,7 @@ app.post('/checks', (req, res) => {
     amount: req.body.amount,
     datedeposited: new Date(),
     description: req.body.description,
-    picture: req.body.picture,
+    picture: photo.url,
     reoccuring: req.body.reoccuring
   }).into('checks').then(id => {
     return id
@@ -56,6 +76,7 @@ app.post('/checks', (req, res) => {
     fifty
   }).into('checkterm').then(id => {
     return res.status(201).json({})
+  })
   })
   }).catch(e => {
     console.error(e)

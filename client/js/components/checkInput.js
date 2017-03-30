@@ -62,10 +62,13 @@ class CheckInput extends Component {
             type="file"
           />
           <br/>
-          reoccuring: <input
+          reoccuring: <select
             onChange={this._reoccuring}
-            type="checkbox"
-          />
+            placeholder="false"
+            >
+              <option value={false}>false</option>
+              <option value={true}>true</option>
+          </select>
           <input
             type="submit"
             onClick={this.sendCheck}
