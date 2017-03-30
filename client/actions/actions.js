@@ -66,6 +66,30 @@ export const deleteCheck = (id) => {
     }
 }
 
+
+
+export const sendPhoto = (photo) => {
+	console.log(photo)
+  return dispatch => {
+  	return fetch('http://localhost:8080/uploadPhoto',
+		{
+			method: "POST",
+			body: JSON.stringify({photo}),
+			headers: { "Content-Type" : "application/json" }
+		}).then(res => {
+			if (res.status >= 300) {
+				throw new Error(res.statusText)
+			}
+			return res
+		}).then(res => {
+			console.log('post photo success', res)
+		}).catch(e => {
+			console.error(e)
+		})
+    }
+}
+
+
 export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',

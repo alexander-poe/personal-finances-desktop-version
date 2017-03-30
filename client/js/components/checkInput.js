@@ -27,7 +27,11 @@ class CheckInput extends Component {
   }
 
   _upload(e) {
+    console.log('tha')
     this.setState({upload: e.target.value})
+    this.props.dispatch(actions.sendPhoto('./server/node.png'))
+    //dispatch action to send photo to cloudinary
+    //return single image in state => send in to send check
   }
 
   _reoccuring(e) {

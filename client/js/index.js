@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom'
+import {HashRouter, Route, Link} from 'react-router-dom';
 import thunk from 'redux-thunk'
 import {Provider, connect} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
@@ -12,7 +13,11 @@ import * as actions from '../actions/actions'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={createStore(reducers, applyMiddleware(thunk))}>
-      <App />
+      <HashRouter>
+        <div>
+          <Route exact path='/' component={App} />
+        </div>
+      </HashRouter>
     </Provider>, document.getElementById('app')
   )
 })

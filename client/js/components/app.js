@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import thunk from 'redux-thunk';
 import { connect } from 'react-redux';
 import CheckInput from './checkInput';
+import Header from './header';
 import TransactionInput from './transactionInput';
 import * as actions from '../../actions/actions';
 
@@ -20,8 +21,7 @@ class App extends Component {
                 this.props.checkTerms : null
 
               return (
-              <div key={idx}>
-
+              <div className="check" key={idx}>
                 <p>Check:{check.description}</p>
                 <p>Amount:{check.amount}</p>
                 <p>DepositedDate:{check.datedeposited}</p>
@@ -30,7 +30,8 @@ class App extends Component {
               )
             }) : null
     return (
-      <div>
+      <div className="app">
+        <Header />
         <CheckInput />
         {allRenderedChecks}
       </div>

@@ -25,40 +25,28 @@ const knex = require('knex')({
 })
 
 app.post('/uploadPhoto', (req, res) => {
-  cloudinary.uploader.upload("./server/node.png", function(result) {
+  console.log(req.body.photo, 'cockerSpaniel')
+  cloudinary.uploader.upload(req.body.photo , function(result) {
     console.log(result)
   });
-})
-
-app.get('/photos', (req, res) => {
-
 })
 
 app.get('/checks', (req, res) => {
   knex('checks').select('id', 'amount', 'datedeposited', 'description', 'picture', 'reoccuring')
   .then(id => {
-    console.log(id)
+    //console.log(id)
     return res.status(200).json({id})
   })
 })
 
 app.post('/checks', (req, res) => {
-  cloudinary.uploader.upload('./server/node.png', function(result) {
-    return result
-  }).then(photo => {
-  let twenty = req.body.amount * .2
-  let thirty = req.body.amount * .3
-  let fifty = req.body.amount * .5
-  var checkid = 20;
   knex.insert({
     amount: req.body.amount,
     datedeposited: new Date(),
     description: req.body.description,
-    picture: photo.url,
+    picture: 'png',
     reoccuring: req.body.reoccuring
   }).into('checks').then(id => {
-    return id
-  }).then(id => {
     return knex('checks').select('id').then(id => {
       let currentId = 0;
       for (var i = 0; i < id.length; i++) {
@@ -69,14 +57,17 @@ app.post('/checks', (req, res) => {
       return currentId;
     })
   }).then(id => {
-  knex.insert({
-    checkid: id,
-    twenty,
-    thirty,
-    fifty
+    let twenty = req.body.amount * .2
+    let thirty = req.body.amount * .3
+    let fifty = req.body.amount * .5
+    var checkid = 20;
+    return knex.insert({
+      checkid: id,
+      twenty,
+      thirty,
+      fifty
   }).into('checkterm').then(id => {
     return res.status(201).json({})
-  })
   })
   }).catch(e => {
     console.error(e)
