@@ -20,7 +20,8 @@ class TransactionInput extends Component {
   }
 
   _account(e) {
-    this.setState({account: e.target.value})
+    let lwrcase = e.target.value.toLowerCase();
+    this.setState({account: lwrcase})
   }
 
   _transaction(e) {
@@ -32,7 +33,6 @@ class TransactionInput extends Component {
   }
 
   _upload(e) {
-    console.log(this.props.checkId.checkTerms, this.props.id)
     this.setState({upload: e.target.value})
   }
 
@@ -42,10 +42,9 @@ class TransactionInput extends Component {
     for (let i = 0; i < this.props.checkId.checkTerms.length; i++) {
       if (this.props.id === this.props.checkId.checkTerms[i].checkid) {
         checkId = this.props.checkId.checkTerms[i].id;
-        console.log('checkid is ', i ,' got it')
+
       }
     }
-    console.log(checkId)
     this.props.dispatch(actions.addTermTransaction(checkId, this.state.account, this.state.transaction, this.state.description, this.state.photo))
   }
 
@@ -53,11 +52,15 @@ class TransactionInput extends Component {
     return (
       <div className="transactionInput">
         <form>
-          accout: <input
-            type="text"
+          account: <select
             onChange={this._account}
             placeholder="twenty"
-          />
+            >
+            <option value="twenty">twenty</option>
+            <option value="thirty">thirty</option>
+            <option value="fifty">fifty</option>
+          </select>
+
           <br/>
           transaction: <input
             type="text"

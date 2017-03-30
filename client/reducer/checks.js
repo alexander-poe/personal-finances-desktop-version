@@ -7,6 +7,7 @@ const initState = {
 
 const checks = (state = initState, action) => {
   if (action.type === actions.get_check_success) {
+    console.log(actions.get_check_success)
     return {
       ...state,
       checks: action.data.id

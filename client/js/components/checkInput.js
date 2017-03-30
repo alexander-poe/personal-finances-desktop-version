@@ -39,6 +39,8 @@ class CheckInput extends Component {
   sendCheck(e) {
     e.preventDefault();
     this.props.dispatch(actions.addCheck(this.state.amount, this.state.description, 'photo.png', true))
+    setTimeout(() => {this.props.dispatch(actions.getCheck())}, 3000);
+
   }
   render() {
     return (
@@ -61,10 +63,14 @@ class CheckInput extends Component {
             type="file"
           />
           <br/>
-          reoccuring: <input
+          reoccuring: <select
             onChange={this._reoccuring}
-            type="checkbox"
-          />
+            placeholder="false"
+            >
+              <option value={false}>false</option>
+              <option value={true}>true</option>
+          </select>
+
           <input
             type="submit"
             onClick={this.sendCheck}
