@@ -40,6 +40,7 @@ class CheckInput extends Component {
     e.preventDefault();
     this.props.dispatch(actions.addCheck(this.state.amount, this.state.description, 'photo.png', true))
     setTimeout(() => {this.props.dispatch(actions.getCheck())}, 3000);
+
   }
   render() {
     return (
@@ -69,6 +70,7 @@ class CheckInput extends Component {
               <option value={false}>false</option>
               <option value={true}>true</option>
           </select>
+
           <input
             type="submit"
             onClick={this.sendCheck}

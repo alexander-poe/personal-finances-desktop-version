@@ -42,6 +42,7 @@ class TransactionInput extends Component {
     for (let i = 0; i < this.props.checkId.checkTerms.length; i++) {
       if (this.props.id === this.props.checkId.checkTerms[i].checkid) {
         checkId = this.props.checkId.checkTerms[i].id;
+
       }
     }
     this.props.dispatch(actions.addTermTransaction(checkId, this.state.account, this.state.transaction, this.state.description, this.state.photo))
@@ -59,6 +60,7 @@ class TransactionInput extends Component {
             <option value="thirty">thirty</option>
             <option value="fifty">fifty</option>
           </select>
+
           <br/>
           transaction: <input
             type="text"
