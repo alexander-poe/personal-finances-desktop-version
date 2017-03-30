@@ -30,9 +30,12 @@ app.post('/uploadPhoto', (req, res) => {
   });
 })
 
-app.get('/photos', (req, res) => {
-
-})
+app.get('/checkJoin', (req, res) => {
+  knex.from('checkterm').innerJoin('checks', 'checkid', 'checks.id')
+  .then(id => {
+    console.log('hereh', id)
+    return res.status(200).json({id})
+  })
 
 app.get('/checks', (req, res) => {
   knex('checks').select('id', 'amount', 'datedeposited', 'description', 'picture', 'reoccuring')
@@ -44,8 +47,10 @@ app.get('/checks', (req, res) => {
 
 app.post('/checks', (req, res) => {
   cloudinary.uploader.upload('./server/node.png', function(result) {
+    console.log(result)
     return result
   }).then(photo => {
+    console.log(photo, '49')
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3
   let fifty = req.body.amount * .5
