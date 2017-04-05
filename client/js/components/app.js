@@ -20,22 +20,22 @@ class App extends Component {
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
+              console.log(check)
               const checkTerms = this.props.checkTerms ?
                 this.props.checkTerms : null
-
               return (
-                <div className="check">
+                <div key={idx} className="check">
                   <div className="checkTop">
-                    <p>Total: $1000 </p>
-                    <p className="right"> Date: 11/11/1111 </p>
+                    <p>Total: ${check.amount} </p>
+                    <p className="right"> Date: {check.datedeposited} </p>
                   </div>
                   <div className="checkMid">
-                    <p> twenty: $200 </p>
-                    <p> thirty: $300 </p>
-                    <p> fifty: $500 </p>
+                    <p> 20: ${check.twenty} </p> <br />
+                    <p> 30: ${check.thirty} </p> <br />
+                    <p> 50: ${check.fifty} </p>  <br />
                   </div>
                   <div className='checkBottom'>
-                    <p> description: for some shhh</p>
+                    <p> description: {check.description}</p>
                     <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
                   </div>
                 </div>
