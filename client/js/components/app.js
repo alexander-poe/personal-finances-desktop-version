@@ -8,27 +8,37 @@ import * as actions from '../../actions/actions';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(actions.getCheck());
+    this.props.dispatch(actions.getCheck())
     this.props.dispatch(actions.getCheckJoin());
+    this.props.dispatch(actions.getCheckTerm());
   }
 
   render() {
     this.props.checkJoin ?
-      console.log(this.props.checkJoin, '18')
+      console.log(this.props.checkJoin, '18') : null;
 
     const allRenderedChecks =
-         this.props.checks ?
-            this.props.checks.checks.map((check, idx) => {
+         this.props.checkJoin ?
+            this.props.checkJoin.checkJoin.map((check, idx) => {
               const checkTerms = this.props.checkTerms ?
                 this.props.checkTerms : null
-              return (
-              <div key={idx}>
 
-                <p>Check:{check.description}</p>
-                <p>Amount:{check.amount}</p>
-                <p>DepositedDate:{check.datedeposited}</p>
-                <TransactionInput id={check.id} checkId={checkTerms} />
-              </div>
+              return (
+                <div className="check">
+                  <div className="checkTop">
+                    <p>Total: $1000 </p>
+                    <p className="right"> Date: 11/11/1111 </p>
+                  </div>
+                  <div className="checkMid">
+                    <p> twenty: $200 </p>
+                    <p> thirty: $300 </p>
+                    <p> fifty: $500 </p>
+                  </div>
+                  <div className='checkBottom'>
+                    <p> description: for some shhh</p>
+                    <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
+                  </div>
+                </div>
               )
             }) : null
     return (

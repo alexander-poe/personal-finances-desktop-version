@@ -1,0 +1,35 @@
+.check {
+  height: 150px;
+  border: 1px solid #81B2D5;
+  background-color: #E1E6EC;
+  padding: 5px;
+
+  .checkTop {
+    height: 40px;
+  }
+
+  .checkMid {
+    height: 66px;
+  }
+
+  .checkMid p {
+    padding: 2%
+  }
+
+  .checkPhoto {
+    height: 38px;
+    width: 50px
+  }
+
+  .checkBottom {
+    height: 38px;
+  }
+
+  .right {
+    float: right;
+  }
+
+  p {
+    display: inline-block
+  }
+}
