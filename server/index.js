@@ -36,6 +36,7 @@ app.get('/checkJoin', (req, res) => {
     console.log('hereh', id)
     return res.status(200).json({id})
   })
+})
 
 app.get('/checks', (req, res) => {
   knex('checks').select('id', 'amount', 'datedeposited', 'description', 'picture', 'reoccuring')

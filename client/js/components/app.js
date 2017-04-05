@@ -8,17 +8,19 @@ import * as actions from '../../actions/actions';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(actions.getCheck())
-    this.props.dispatch(actions.getCheckTerm());
+    this.props.dispatch(actions.getCheck());
+    this.props.dispatch(actions.getCheckJoin());
   }
 
   render() {
+    this.props.checkJoin ?
+      console.log(this.props.checkJoin, '18')
+
     const allRenderedChecks =
          this.props.checks ?
             this.props.checks.checks.map((check, idx) => {
               const checkTerms = this.props.checkTerms ?
                 this.props.checkTerms : null
-
               return (
               <div key={idx}>
 
@@ -42,6 +44,7 @@ const mapStateToProps = state => {
   return {
     libraries: [],
     checks: state.checks,
+    checkJoin: state.checkJoin,
     checkTerms: state.checkTerms,
   }
 }
