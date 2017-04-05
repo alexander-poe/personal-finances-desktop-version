@@ -8,9 +8,8 @@ import * as actions from '../../actions/actions';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(actions.getCheck())
+    this.props.dispatch(actions.getCheck());
     this.props.dispatch(actions.getCheckJoin());
-    this.props.dispatch(actions.getCheckTerm());
   }
 
   render() {
@@ -22,7 +21,6 @@ class App extends Component {
             this.props.checks.checks.map((check, idx) => {
               const checkTerms = this.props.checkTerms ?
                 this.props.checkTerms : null
-
               return (
               <div key={idx}>
 

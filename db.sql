@@ -25,9 +25,7 @@ CREATE TABLE CheckTerm (
      Photo varchar(255)
  );
 
+SELECT * FROM "checkterm"
+inner JOIN "checks"
+ON "checkterm" . "checkid" = "checks" . "id"
 
---Joins checks & checkTerms
-
-select * from "checkterm"
-inner join "checks"
-on "checkterm" . "checkid" = "checks" . "id"
