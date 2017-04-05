@@ -21,6 +21,29 @@ export const getCheck = () => {
     }
 }
 
+export const get_check_join_success = 'get_check_join_success';
+
+export const getCheckJoinSuccess = data => ({
+	type: get_check_join_success,
+	data
+})
+
+export const getCheckJoin = () => {
+	return dispatch =>  {
+		return fetch('http://localhost:8080/checkJoin')
+			.then(res => {
+				return res.json()
+			}).then(res => {
+				console.log(res)
+				if (!res) return dispatch(getCheckJoinSuccess([]))
+				return dispatch(getCheckJoinSuccess(res))
+			})
+			.catch(e => {
+				console.error(e)
+			})
+    }
+}
+
 export const get_check_term_success = 'get_check_term_success'
 
 export const getCheckTermSuccess = data => ({

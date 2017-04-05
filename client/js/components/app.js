@@ -9,10 +9,14 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(actions.getCheck())
+    this.props.dispatch(actions.getCheckJoin());
     this.props.dispatch(actions.getCheckTerm());
   }
 
   render() {
+    this.props.checkJoin ?
+      console.log(this.props.checkJoin, '18')
+
     const allRenderedChecks =
          this.props.checks ?
             this.props.checks.checks.map((check, idx) => {
@@ -42,6 +46,7 @@ const mapStateToProps = state => {
   return {
     libraries: [],
     checks: state.checks,
+    checkJoin: state.checkJoin,
     checkTerms: state.checkTerms,
   }
 }
