@@ -6,6 +6,15 @@ import TransactionInput from './transactionInput';
 import * as actions from '../../actions/actions';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: false,
+      switchClass: false
+    }
+    this.toggleInput = this.toggleInput.bind(this);
+    this.switcher = this.switcher.bind(this);
+  }
 
   componentDidMount() {
     this.props.dispatch(actions.getCheck())
@@ -13,38 +22,90 @@ class App extends Component {
     this.props.dispatch(actions.getCheckTerm());
   }
 
-  render() {
-    this.props.checkJoin ?
-      console.log(this.props.checkJoin, '18') : null;
+  switcher() {
+    this.setState({switchClass: !this.state.switchClass})
+  }
 
+  toggleInput() {
+    this.setState({input: !this.state.input})
+  }
+
+  render() {
+    const switchStatus = this.state.switchClass ? 'flip-container-switch' : 'null';
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
-              console.log(check)
-              const checkTerms = this.props.checkTerms ?
-                this.props.checkTerms : null
               return (
-                <div key={idx} className="check">
-                  <div className="checkTop">
-                    <p>Total: ${check.amount} </p>
-                    <p className="right"> Date: {check.datedeposited} </p>
-                  </div>
-                  <div className="checkMid">
-                    <p> 20: ${check.twenty} </p> <br />
-                    <p> 30: ${check.thirty} </p> <br />
-                    <p> 50: ${check.fifty} </p>  <br />
-                  </div>
-                  <div className='checkBottom'>
-                    <p> description: {check.description}</p>
-                    <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
-                  </div>
+                <div
+                  key={idx}
+                  id="flip-container"
+                  className={switchStatus}
+                  onClick={this.switcher}
+                >
+                	<div className="flipper">
+                    <p> such such such such</p>
+                		<div className="front">
+                      <div key={idx} id="card">
+                          <div key={idx} className="check">
+                            <div className="checkTop">
+                              <p>Total: ${check.amount} </p>
+                              <p
+                                className="right"
+                              >
+                                Date: {check.datedeposited}
+                              </p>
+                            </div>
+                            <div className="checkMid">
+                              <p> 20: ${check.twenty} </p> <br />
+                              <p> 30: ${check.thirty} </p> <br />
+                              <p> 50: ${check.fifty} </p>  <br />
+                            </div>
+                            <div className='checkBottom'>
+                              <p> description: {check.description}</p>
+                              <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
+                            </div>
+                          </div>
+                      </div>
+                		</div>
+                		<div className="back">
+                      <div key={idx} id="card">
+                          <div key={idx} className="check">
+                            <div className="checkTop">
+                              <p>Total: ${check.amount} </p>
+                              <p
+                                className="right"
+                              >
+                                Date: {check.datedeposited}
+                              </p>
+                            </div>
+                            <div className="checkMid">
+                              <p> 20: ${check.twenty} </p> <br />
+                              <p> 30: ${check.thirty} </p> <br />
+                              <p> 50: ${check.fifty} </p>  <br />
+                            </div>
+                            <div className='checkBottom'>
+                              <p> description: {check.description}</p>
+                              <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
+                            </div>
+                          </div>
+                      </div>
+                		</div>
+                	</div>
                 </div>
               )
             }) : null
     return (
       <div>
-        <CheckInput />
-        {allRenderedChecks}
+        <p
+          onClick={this.toggleInput}
+          className="addCheckToggle"
+        >
+          +
+        </p>
+        {this.state.input ? <CheckInput /> : null}
+        <div className="checkContainer">
+          {allRenderedChecks}
+        </div>
       </div>
     );
   }

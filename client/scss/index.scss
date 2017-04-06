@@ -1,8 +1,16 @@
+.checkInput {
+  border: 1px solid;
+  height: 118px;
+  line-height: 26px;
+  padding-left: 14px;
+}
+
 .check {
   height: 150px;
   border: 1px solid #81B2D5;
   background-color: #E1E6EC;
   padding: 5px;
+  margin-top: 23px;
 
   .checkTop {
     height: 40px;
@@ -33,4 +41,49 @@
   p {
     display: inline-block
   }
+}
+
+.checkContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#flip-container {
+	perspective: 480px;
+  margin: auto;
+}
+
+.flip-container-switch .flipper, .flip-container-switch .flipper {
+  transform: rotateY(180deg);
+}
+
+
+#flip-container, .front, .back {
+	width: 79%;
+	height: 150px;
+}
+
+.flipper {
+	transition: 0.9s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+}
+
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+  z-index: 0;
+	transform: rotateY(180deg);
 }

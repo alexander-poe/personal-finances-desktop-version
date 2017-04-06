@@ -7,10 +7,10 @@ const initState = {
 
 const checkJoin = (state = initState, action) => {
   if (action.type === actions.get_check_join_success) {
-    console.log(action.data)
+    let data = action.data.id.reverse();
     return {
       ...state,
-      checkJoin: action.data.id
+      checkJoin: data
     }
   }
   return state;

@@ -39,7 +39,7 @@ class CheckInput extends Component {
   sendCheck(e) {
     e.preventDefault();
     this.props.dispatch(actions.addCheck(this.state.amount, this.state.description, 'photo.png', true))
-    setTimeout(() => {this.props.dispatch(actions.getCheck())}, 3000);
+    setTimeout(() => {this.props.dispatch(actions.getCheck())}, 5000);
   }
   render() {
     return (
