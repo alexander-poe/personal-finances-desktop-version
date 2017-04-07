@@ -40,10 +40,8 @@ class App extends Component {
                   key={idx}
                   id="flip-container"
                   className={switchStatus}
-                  onClick={this.switcher}
                 >
                 	<div className="flipper">
-                    <p> such such such such</p>
                 		<div className="front">
                       <div key={idx} id="card">
                           <div key={idx} className="check">
@@ -101,6 +99,12 @@ class App extends Component {
           className="addCheckToggle"
         >
           +
+        </p>
+        <p
+          onClick={this.switcher}
+          className="addCheckToggle"
+        >
+          /
         </p>
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">

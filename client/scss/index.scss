@@ -81,9 +81,11 @@
 .front {
 	z-index: 2;
 	transform: rotateY(0deg);
+  padding-left: 10%;
 }
 
 .back {
   z-index: 0;
 	transform: rotateY(180deg);
+  padding-right: 10%;
 }
