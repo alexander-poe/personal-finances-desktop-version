@@ -44,7 +44,6 @@ class App extends Component {
                 >
                 	<div className="flipper">
                 		<div className="front">
-                      <div key={idx} id="card">
                         <CheckFront
                           index={check.idx}
                           amount={check.amount}
