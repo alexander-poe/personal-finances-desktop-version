@@ -38,13 +38,14 @@ class TransactionInput extends Component {
 
   _sendTransaction(e) {
     e.preventDefault();
-    let checkId = 0;
-    for (let i = 0; i < this.props.checkId.checkTerms.length; i++) {
-      if (this.props.id === this.props.checkId.checkTerms[i].checkid) {
-        checkId = this.props.checkId.checkTerms[i].id;
+    let idToSend = 0;
+    for (let i = 0; i < this.props.checkTerms.checkTerms.length; i++) {
+      console.log(this.props.checkTerms.checkTerms[i].checkid)
+      if (this.props.checkTerms.checkTerms[i].checkid == e.target.name) {
+        idToSend = this.props.checkTerms.checkTerms[i].id
       }
     }
-    this.props.dispatch(actions.addTermTransaction(checkId, this.state.account, this.state.transaction, this.state.description, this.state.photo))
+    this.props.dispatch(actions.addTermTransaction(idToSend, this.state.account, this.state.transaction, this.state.description, this.state.photo))
   }
 
   render() {
@@ -79,6 +80,7 @@ class TransactionInput extends Component {
           <br/>
           <input
             type="submit"
+            name={this.props.id}
             onClick={this._sendTransaction}
           />
         </form>
@@ -87,4 +89,11 @@ class TransactionInput extends Component {
   }
 }
 
-export default connect()(TransactionInput);
+
+const mapStateToProps = state => {
+  return {
+    checkTerms: state.checkTerms
+  }
+}
+
+export default connect(mapStateToProps)(TransactionInput);
