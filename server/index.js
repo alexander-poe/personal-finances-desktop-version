@@ -31,7 +31,7 @@ app.post('/uploadPhoto', (req, res) => {
 })
 
 app.get('/checkJoin', (req, res) => {
-  knex.from('checkterm').innerJoin('checks', 'checkid', 'checks.id')
+  knex.select('*').from('checkterm').innerJoin('checks', 'checkid', 'checks.id')
   .then(id => {
     console.log('hereh', id)
     return res.status(200).json({id})

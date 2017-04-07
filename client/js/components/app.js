@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import thunk from 'redux-thunk';
 import { connect } from 'react-redux';
 import CheckInput from './checkInput';
+import CheckFront from './checkFront';
 import TransactionInput from './transactionInput';
 import * as actions from '../../actions/actions';
 
@@ -31,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    const switchStatus = this.state.switchClass ? 'flip-container-switch' : 'null';
+    const switchStatus = this.state.switchClass ? 'flip-container-switch' : null;
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
@@ -43,49 +44,22 @@ class App extends Component {
                 >
                 	<div className="flipper">
                 		<div className="front">
-                      <div key={idx} id="card">
-                          <div key={idx} className="check">
-                            <div className="checkTop">
-                              <p>Total: ${check.amount} </p>
-                              <p
-                                className="right"
-                              >
-                                Date: {check.datedeposited}
-                              </p>
-                            </div>
-                            <div className="checkMid">
-                              <p> 20: ${check.twenty} </p> <br />
-                              <p> 30: ${check.thirty} </p> <br />
-                              <p> 50: ${check.fifty} </p>  <br />
-                            </div>
-                            <div className='checkBottom'>
-                              <p> description: {check.description}</p>
-                              <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
-                            </div>
-                          </div>
+                        <CheckFront
+                          index={check.idx}
+                          amount={check.amount}
+                          date={check.datedeposited}
+                          description={check.description}
+                          twenty={check.twenty}
+                          thirty={check.thirty}
+                          fifty={check.fifty}
+                          />
                       </div>
                 		</div>
                 		<div className="back">
                       <div key={idx} id="card">
-                          <div key={idx} className="check">
-                            <div className="checkTop">
-                              <p>Total: ${check.amount} </p>
-                              <p
-                                className="right"
-                              >
-                                Date: {check.datedeposited}
-                              </p>
-                            </div>
-                            <div className="checkMid">
-                              <p> 20: ${check.twenty} </p> <br />
-                              <p> 30: ${check.thirty} </p> <br />
-                              <p> 50: ${check.fifty} </p>  <br />
-                            </div>
-                            <div className='checkBottom'>
-                              <p> description: {check.description}</p>
-                              <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
-                            </div>
-                          </div>
+                        <div key={idx} className="check">
+                          <TransactionInput id={check.id} />
+                        </div>
                       </div>
                 		</div>
                 	</div>
