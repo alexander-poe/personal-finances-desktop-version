@@ -24,7 +24,7 @@ class App extends Component {
     this.props.dispatch(actions.getCheckJoin());
     this.props.dispatch(actions.getCheckTerm());
   }
-
+  
   deleteCheck() {
     this.props.dispatch(actions.deleteCheck())
   }
@@ -36,7 +36,6 @@ class App extends Component {
   toggleInput() {
     this.setState({input: !this.state.input})
   }
-
   render() {
     const switchStatus = this.state.switchClass ? 'flip-container-switch' : null;
     const allRenderedChecks =
