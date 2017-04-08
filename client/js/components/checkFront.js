@@ -10,9 +10,7 @@ class CheckFront extends Component {
       <div key={this.props.index} className="check">
         <div className="checkTop">
           <p>Total: ${this.props.amount} </p>
-          <p
-            className="right"
-          >
+          <p className="right">
             Date: {this.props.date}
           </p>
         </div>
