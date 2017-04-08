@@ -43,7 +43,7 @@ class CheckInput extends Component {
   }
   render() {
     return (
-      <div className="checkInput">
+      <div className="checkInput w3-container w3-center w3-animate-left">
         <form>
           amount: <input
             type="text"

@@ -1,21 +1,32 @@
+body {
+  background-color: #78AFF4;
+}
 
-.transactionInput {
-  display: inline-block;
+form {
+  text-align: left;
+  border: 1px solid #81B2D5;
+  border-radius: 12px;
+  padding-left: 10px;
+  font-size: small;
 }
 
 .checkInput {
-  border: 1px solid;
-  height: 118px;
-  line-height: 26px;
-  padding-left: 14px;
+  position: fixed;
+  margin: 15px;
+}
+
+.transactionInput {
+  width: 50%;
+  float: right;
 }
 
 .check {
-  height: 150px;
+  height: 264px;
   border: 1px solid #81B2D5;
   background-color: #E1E6EC;
   padding: 5px;
   margin-top: 23px;
+  margin-bottom: 23px;
 
   .checkTop {
     height: 40px;
@@ -36,7 +47,7 @@
   }
 
   .checkBottom {
-    height: 38px;
+    display: inline;
   }
 
   .right {
@@ -67,7 +78,7 @@
 
 #flip-container, .front, .back {
 	width: 79%;
-	height: 150px;
+	height: 300px;
   padding-top: 50px;
 }
 
@@ -87,21 +98,37 @@
 .front {
 	z-index: 2;
 	transform: rotateY(0deg);
-  padding-left: 10%;
+  margin-left: 13%;
 }
 
 .back {
   z-index: 0;
 	transform: rotateY(180deg);
-  padding-right: 10%;
+  margin-left: 9%;
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #3CD9B5;
 }
 
 table {
-  height: 150px;
+  height: 253px;
   overflow-y: scroll;
   display: block;
+}
+
+.header {
+  height: 200px;
+  background: #26AA40; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #26AA40, #3CD9B5); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #26AA40, #3CD9B5); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #26AA40, #3CD9B5); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #26AA40, #3CD9B5); /* Standard syntax (must be last) */
+  height: 84px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.w3-center {
+  text-align: inherit;
 }
