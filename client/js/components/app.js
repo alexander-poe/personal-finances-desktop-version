@@ -24,7 +24,7 @@ class App extends Component {
     this.props.dispatch(actions.getCheckJoin());
     this.props.dispatch(actions.getCheckTerm());
   }
-  
+
   deleteCheck() {
     this.props.dispatch(actions.deleteCheck())
   }
@@ -65,8 +65,7 @@ class App extends Component {
                   		<div className="back">
                         <div key={idx} id="card">
                           <div key={idx} className="check">
-                            <TransactionInput id={check.id} />
-                            <div className="right">
+                            <div className="form">
                               <table>
                                 <tbody>
                                   <tr>
@@ -82,7 +81,7 @@ class App extends Component {
                                         if (trans.checktermid === check.id) {
                                           return (
                                           <tr key={idx}>
-                                            <td>{trans.transactiondate}</td>
+                                            <td className="dateCol">{trans.transactiondate}</td>
                                             <td>{trans.account}</td>
                                             <td>-{trans.transaction}</td>
                                             <td>{trans.description}</td>
@@ -105,18 +104,20 @@ class App extends Component {
             }) : null;
     return (
       <div>
-        <p
-          onClick={this.toggleInput}
-          className="addCheckToggle"
-        >
-          +
-        </p>
-        <p
-          onClick={this.switcher}
-          className="addCheckToggle"
-        >
-          /
-        </p>
+        <div className="header">
+          <p
+            onClick={this.toggleInput}
+            className="addCheckToggle"
+          >
+            + add check
+          </p>
+          <p
+            onClick={this.switcher}
+            className="addCheckToggle"
+          >
+            / transactions
+          </p>
+        </div>
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">
           {allRenderedChecks}

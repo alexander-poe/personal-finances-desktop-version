@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import TransactionInput from './transactionInput';
 
 class CheckFront extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      transactionInput: false
+    }
+    this.transactionInputShow = this.transactionInputShow.bind(this);
+  }
+
+  transactionInputShow(e) {
+    this.setState({transactionInput: !this.state.transactionInput})
   }
 
   render() {
@@ -22,7 +31,20 @@ class CheckFront extends Component {
         <div className='checkBottom'>
           <p> description: {this.props.description}</p>
           <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
-        </div>
+          <p
+            className="addTrans"
+            onClick={this.transactionInputShow}
+          >
+          +
+          </p>
+      </div>
+
+        {
+        this.state.transactionInput ?
+        <TransactionInput
+          className="transactionInput w3-container w3-center w3-animate-top"
+        /> : null
+        }
       </div>
     )
   }

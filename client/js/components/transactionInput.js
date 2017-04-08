@@ -50,7 +50,7 @@ class TransactionInput extends Component {
 
   render() {
     return (
-      <div className="transactionInput">
+      <div className={this.props.className}>
         <form>
           account: <select
             onChange={this._account}
