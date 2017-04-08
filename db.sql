@@ -4,12 +4,14 @@ CREATE TABLE Checks (
     DateDeposited DATE,
     Description varchar(255),
     Picture varchar(255),
-    Reoccuring BOOLEAN
+    Reoccuring Boolean,
+    Active Boolean,
+    Deleted Boolean
 );
 
 CREATE TABLE CheckTerm (
     ID serial primary key,
-    CheckID int references CHECKS(ID, DateDeposited),
+    CheckID int references CHECKS(ID),
     Twenty int,
     Thirty int,
     Fifty int
@@ -28,4 +30,3 @@ CREATE TABLE CheckTerm (
 SELECT * FROM "checkterm"
 inner JOIN "checks"
 ON "checkterm" . "checkid" = "checks" . "id"
-

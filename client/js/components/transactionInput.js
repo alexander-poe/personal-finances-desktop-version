@@ -7,7 +7,7 @@ class TransactionInput extends Component {
     super(props);
     this.state = {
       id: 0,
-      account: '20',
+      account: 'twenty',
       transaction: 0,
       description: 'Intel',
       upload: 'photo',

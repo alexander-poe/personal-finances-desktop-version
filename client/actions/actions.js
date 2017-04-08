@@ -71,7 +71,7 @@ export const deleteCheck = (id) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',
 		{
-			method: "DELETE",
+			method: "PUT",
 			body: JSON.stringify({
 				id
 			}),
@@ -138,5 +138,29 @@ export const addTermTransaction = (checktermid, account, transaction, descriptio
 		}).catch(e => {
 			console.error(e)
 		})
+    }
+}
+
+export const get_transactions_success = 'get_transactions_success';
+
+export const getTransactionsSuccess = data => ({
+	type: get_transactions_success,
+	data
+})
+
+
+export const getTransactions = () => {
+	return dispatch =>  {
+		return fetch('http://localhost:8080/termtransactions')
+			.then(res => {
+				return res.json()
+			}).then(res => {
+				console.log(res)
+				if (!res) return dispatch(getTransactionsSuccess([]))
+				return dispatch(getTransactionsSuccess(res))
+			})
+			.catch(e => {
+				console.error(e)
+			})
     }
 }

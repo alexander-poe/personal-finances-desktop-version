@@ -46,12 +46,24 @@ app.get('/checks', (req, res) => {
   })
 })
 
+
+app.put('/checks', (req, res) => {
+  knex('checks').where({
+    id: req.body.id
+  }).update({
+    deleted: true
+  }).then(id => {
+    return res.json({id})
+  }).catch(e => {
+    console.error(e)
+  })
+})
+
+
 app.post('/checks', (req, res) => {
   cloudinary.uploader.upload('./server/node.png', function(result) {
-    console.log(result)
     return result
   }).then(photo => {
-    console.log(photo, '49')
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3
   let fifty = req.body.amount * .5
@@ -61,7 +73,9 @@ app.post('/checks', (req, res) => {
     datedeposited: new Date(),
     description: req.body.description,
     picture: photo.url,
-    reoccuring: req.body.reoccuring
+    reoccuring: req.body.reoccuring,
+    active: true,
+    deleted: false
   }).into('checks').then(id => {
     return id
   }).then(id => {
@@ -84,17 +98,6 @@ app.post('/checks', (req, res) => {
     return res.status(201).json({})
   })
   })
-  }).catch(e => {
-    console.error(e)
-    res.sendStatus(500)
-  })
-})
-
-app.delete('/checks', (req, res) => {
-  knex('checks').where({
-    id: req.body.id
-  }).del().then(id => {
-    return res.json({id})
   }).catch(e => {
     console.error(e)
     res.sendStatus(500)
@@ -137,7 +140,7 @@ app.put('/checkterm', (req, res) => {
 })
 
 app.get('/termtransactions', (req, res) => {
-  knex('termtransactions').select('id', 'checktermid', 'transaction', 'description', 'photo')
+  knex('termtransactions').select('id', 'checktermid', 'transactiondate', 'account', 'transaction', 'description', 'photo')
   .then(id => {
     return res.status(200).json({id})
   })

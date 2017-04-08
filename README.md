@@ -1,5 +1,14 @@
 
+TODO for MVP1
+-Transactions feature
+    -see transactions for check
+    -see all Transactions
 
+    -make date more presentable with possible algorithm in either the reducer or server. Also there is an option of having a cleaner date input originally. 
+
+-Delete check button
+
+-UI UX design
 
 ## DB STRUCTURE
   ```sql

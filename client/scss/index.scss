@@ -1,3 +1,7 @@
+.transactionInput {
+  display: inline-block;
+}
+
 .checkInput {
   border: 1px solid;
   height: 118px;
@@ -63,6 +67,7 @@
 #flip-container, .front, .back {
 	width: 79%;
 	height: 150px;
+  padding-top: 50px;
 }
 
 .flipper {
@@ -88,4 +93,14 @@
   z-index: 0;
 	transform: rotateY(180deg);
   padding-right: 10%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+  height: 150px;
+  overflow-y: scroll;
+  display: block;
 }
