@@ -2,7 +2,6 @@ import 'babel-polyfill';
 import express from 'express';
 require('dotenv').config();
 const bodyParser = require('body-parser');
-const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
 const DBURL = process.env.DBURL;
 const cloudinary = require('cloudinary');
@@ -17,7 +16,7 @@ cloudinary.config({
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(process.env.CLIENT_PATH));
+app.use(express.static('public'));
 
 const knex = require('knex')({
   client: 'pg',
