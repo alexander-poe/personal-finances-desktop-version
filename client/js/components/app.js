@@ -38,10 +38,23 @@ class App extends Component {
     this.setState({input: !this.state.input})
   }
   render() {
+    let total = 0;
+    let total20 = 0;
+    let total30 = 0;
+    let total50 = 0;
+    const totalAccounts = this.props.checkTerms ?
+      this.props.checkTerms.checkTerms.map((amount, idx) => {
+        total += amount.twenty + amount.thirty + amount.fifty
+        total20 += amount.twenty;
+        total30 += amount.thirty;
+        total50 += amount.fifty;
+      })
+      : null;
     const switchStatus = this.state.switchClass ? 'flip-container-switch' : null;
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
+              console.log(check.datedeposited)
               if (!check.deleted) {
                 return (
                   <div
@@ -112,6 +125,12 @@ class App extends Component {
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">
           {allRenderedChecks}
+        </div>
+        <div className="footer">
+          <p>Total Amount: {total}</p>
+          <p>Savings[20]: {total20}</p>
+          <p>Spendings[30]: {total30}</p>
+          <p>Essentials[50]: {total50}</p>
         </div>
       </div>
     );
