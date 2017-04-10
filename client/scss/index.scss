@@ -1,5 +1,10 @@
+
+* {
+    font-family: 'Work Sans', sans-serif;
+}
+
 body {
-  background-color: #78AFF4;
+  background-color: #067EBD;
 }
 
 form {
@@ -20,13 +25,20 @@ form {
   float: right;
 }
 
+#noPad {
+  padding: 0;
+}
+
 .check {
   height: 264px;
-  border: 1px solid #81B2D5;
-  background-color: #E1E6EC;
-  padding: 5px;
+  background-color: #262228;
+  padding: 50px;
   margin-top: 23px;
   margin-bottom: 23px;
+
+  p {
+    color: white;
+  }
 
   .checkTop {
     height: 40px;
@@ -98,7 +110,8 @@ form {
 .front {
 	z-index: 2;
 	transform: rotateY(0deg);
-  margin-left: 13%;
+  margin-left: 9%;
+  padding: 20px;
 }
 
 .back {
@@ -108,25 +121,47 @@ form {
 }
 
 table, th, td {
-    border: 1px solid #3CD9B5;
+  padding: 10px;
 }
 
 table {
   height: 253px;
   overflow-y: scroll;
-  display: block;
+  display: flex;
+  justify-content: center;
+  color: white;
+
 }
 
 .header {
   height: 200px;
-  background: #26AA40; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #26AA40, #3CD9B5); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #26AA40, #3CD9B5); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #26AA40, #3CD9B5); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #26AA40, #3CD9B5); /* Standard syntax (must be last) */
-  height: 84px;
-  margin-right: 5%;
-  margin-left: 5%;
+  background: #FED627;
+  height: 114px;
+
+    p {
+      color: #067EBD;
+    }
+
+    .switchIcon {
+      height: 20px;
+      margin-top: 16px;
+      padding-right: 3px;
+    }
+
+    .plusIcon {
+      height: 16px;
+      margin-top: 16px;
+      padding-right: 3px;
+    }
+
+    .switchParent {
+      display: flex;
+      width: 33%;
+      padding-left: 7px;
+      height: 29px;
+    }
+
+
 }
 
 .w3-center {

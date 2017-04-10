@@ -64,7 +64,7 @@ class App extends Component {
                   		</div>
                   		<div className="back">
                         <div key={idx} id="card">
-                          <div key={idx} className="check">
+                          <div key={idx} className="check" id="noPad">
                             <div className="form">
                               <table>
                                 <tbody>
@@ -105,18 +105,28 @@ class App extends Component {
     return (
       <div>
         <div className="header">
-          <p
+          <div
             onClick={this.toggleInput}
-            className="addCheckToggle"
+            className="switchParent"
           >
-            + add check
-          </p>
-          <p
+            <img src="./assets/plus-symbol.png" className="plusIcon" />
+            <p
+              onClick={this.toggleInput}
+              className="addCheckToggle"
+            >
+              add
+            </p>
+          </div>
+          <div
             onClick={this.switcher}
-            className="addCheckToggle"
-          >
-            / transactions
-          </p>
+            className="switchParent">
+            <img src="./assets/light-bolt.png" className="switchIcon"/>
+            <p
+              className="addCheckToggle"
+            >
+              toggle
+            </p>
+          </div>
         </div>
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">
