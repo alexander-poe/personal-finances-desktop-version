@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CheckInput from './checkInput';
 import CheckFront from './checkFront';
 import TransactionInput from './transactionInput';
+import Header from './header'
 import * as actions from '../../actions/actions';
 
 class App extends Component {
@@ -104,30 +105,10 @@ class App extends Component {
             }) : null;
     return (
       <div>
-        <div className="header">
-          <div
-            onClick={this.toggleInput}
-            className="switchParent"
-          >
-            <img src="./assets/plus-symbol.png" className="plusIcon" />
-            <p
-              onClick={this.toggleInput}
-              className="addCheckToggle"
-            >
-              add
-            </p>
-          </div>
-          <div
-            onClick={this.switcher}
-            className="switchParent">
-            <img src="./assets/light-bolt.png" className="switchIcon"/>
-            <p
-              className="addCheckToggle"
-            >
-              toggle
-            </p>
-          </div>
-        </div>
+        <Header
+          checkToggle={this.toggleInput}
+          switchClick={this.switcher}
+        />
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">
           {allRenderedChecks}
