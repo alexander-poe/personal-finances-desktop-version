@@ -3,6 +3,7 @@ import express from 'express';
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST;
 const DBURL = process.env.DBURL;
 const cloudinary = require('cloudinary');
 
