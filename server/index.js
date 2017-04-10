@@ -16,7 +16,7 @@ cloudinary.config({
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static(process.env.CLIENT_PATH));
 
 const knex = require('knex')({
   client: 'pg',
