@@ -7,7 +7,7 @@ export const getCheckSuccess = data => ({
 
 export const getCheck = () => {
 	return dispatch =>  {
-		return fetch('http://localhost:8080/checks')
+		return fetch('/checks')
 			.then(res => {
 				return res.json()
 			}).then(res => {
@@ -30,7 +30,7 @@ export const getCheckJoinSuccess = data => ({
 
 export const getCheckJoin = () => {
 	return dispatch =>  {
-		return fetch('http://localhost:8080/checkJoin')
+		return fetch('/checkJoin')
 			.then(res => {
 				return res.json()
 			}).then(res => {
@@ -53,7 +53,7 @@ export const getCheckTermSuccess = data => ({
 
 export const getCheckTerm = () => {
 	return dispatch =>  {
-		return fetch('http://localhost:8080/checkterm')
+		return fetch('/checkterm')
 			.then(res => {
 				return res.json()
 			}).then(res => {
@@ -69,7 +69,7 @@ export const getCheckTerm = () => {
 
 export const deleteCheck = (id) => {
   return dispatch => {
-  	return fetch('http://localhost:8080/checks',
+  	return fetch('/checks',
 		{
 			method: "PUT",
 			body: JSON.stringify({
@@ -91,7 +91,7 @@ export const deleteCheck = (id) => {
 
 export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
-  	return fetch('http://localhost:8080/checks',
+  	return fetch('/checks',
 		{
 			method: "POST",
 			body: JSON.stringify({
@@ -116,7 +116,7 @@ export const addCheck = (amount, description, picture, reoccuring) => {
 
 export const addTermTransaction = (checktermid, account, transaction, description, photo) => {
   return dispatch => {
-  	return fetch('http://localhost:8080/termtransactions',
+  	return fetch('/termtransactions',
 		{
 			method: "POST",
 			body: JSON.stringify({
@@ -151,7 +151,7 @@ export const getTransactionsSuccess = data => ({
 
 export const getTransactions = () => {
 	return dispatch =>  {
-		return fetch('http://localhost:8080/termtransactions')
+		return fetch('/termtransactions')
 			.then(res => {
 				return res.json()
 			}).then(res => {
