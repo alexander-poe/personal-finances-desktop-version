@@ -95,7 +95,7 @@ class App extends Component {
                                         if (trans.checktermid === check.id) {
                                           return (
                                           <tr key={idx}>
-                                            <td className="dateCol">{trans.transactiondate}</td>
+                                            <td className="dateCol">{new Date(trans.transactiondate).toLocaleDateString()}</td>
                                             <td>{trans.account}</td>
                                             <td>-{trans.transaction}</td>
                                             <td>{trans.description}</td>
