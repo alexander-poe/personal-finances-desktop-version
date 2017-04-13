@@ -25,6 +25,9 @@ class Header extends Component {
               toggle
             </p>
           </div>
+          <div className="logo">
+            <img src="./assets/logo.png" />
+          </div>
         </div>
     )
   }

@@ -132,6 +132,9 @@ class App extends Component {
           <p>Spendings[30]: {total30}</p>
           <p>Essentials[50]: {total50}</p>
         </div>
+        <div className="footerDescription">
+          
+        </div>
       </div>
     );
   }
