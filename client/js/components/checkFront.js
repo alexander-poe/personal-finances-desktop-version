@@ -32,15 +32,16 @@ class CheckFront extends Component {
         </div>
         <div className='checkBottom'>
           <p> description: {this.props.description}</p>
-          <img className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg" />
-          <p
-            className="addTrans"
+          <img
+            className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg"
+          />
+          <img
             onClick={this.transactionInputShow}
-          >
-          +
-          </p>
-      </div>
+            src="./assets/plus-symbol.png"
+            className="plusIcon"
+          />
 
+        </div>
         {
         this.state.transactionInput ?
         <TransactionInput

@@ -172,6 +172,31 @@ table {
     }
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  img {
+    height: 50px;
+    width: auto;
+  }
+}
+
+.addTransParent {
+  display: flex;
+  justify-content: center;
+  img.plusIcon {
+    height: 31px;
+  }
+}
+
 .w3-center {
   text-align: inherit;
+}
+
+@media screen and (max-width: 699px) and (min-width: 300px) {
+  #flip-container, .front, .back {
+  	width: 95%;
+  	height: 300px;
+    padding-top: 50px;
+  }
 }
