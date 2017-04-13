@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CheckInput from './checkInput';
 import CheckFront from './checkFront';
 import TransactionInput from './transactionInput';
+import Header from './header'
 import * as actions from '../../actions/actions';
 
 class App extends Component {
@@ -37,10 +38,23 @@ class App extends Component {
     this.setState({input: !this.state.input})
   }
   render() {
+    let total = 0;
+    let total20 = 0;
+    let total30 = 0;
+    let total50 = 0;
+    const totalAccounts = this.props.checkTerms ?
+      this.props.checkTerms.checkTerms.map((amount, idx) => {
+        total += amount.twenty + amount.thirty + amount.fifty
+        total20 += amount.twenty;
+        total30 += amount.thirty;
+        total50 += amount.fifty;
+      })
+      : null;
     const switchStatus = this.state.switchClass ? 'flip-container-switch' : null;
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
+              console.log(check.datedeposited)
               if (!check.deleted) {
                 return (
                   <div
@@ -81,7 +95,7 @@ class App extends Component {
                                         if (trans.checktermid === check.id) {
                                           return (
                                           <tr key={idx}>
-                                            <td className="dateCol">{trans.transactiondate}</td>
+                                            <td className="dateCol">{new Date(trans.transactiondate).toLocaleDateString()}</td>
                                             <td>{trans.account}</td>
                                             <td>-{trans.transaction}</td>
                                             <td>{trans.description}</td>
@@ -104,33 +118,19 @@ class App extends Component {
             }) : null;
     return (
       <div>
-        <div className="header">
-          <div
-            onClick={this.toggleInput}
-            className="switchParent"
-          >
-            <img src="./assets/plus-symbol.png" className="plusIcon" />
-            <p
-              onClick={this.toggleInput}
-              className="addCheckToggle"
-            >
-              add
-            </p>
-          </div>
-          <div
-            onClick={this.switcher}
-            className="switchParent">
-            <img src="./assets/light-bolt.png" className="switchIcon"/>
-            <p
-              className="addCheckToggle"
-            >
-              toggle
-            </p>
-          </div>
-        </div>
+        <Header
+          checkToggle={this.toggleInput}
+          switchClick={this.switcher}
+        />
         {this.state.input ? <CheckInput /> : null}
         <div className="checkContainer">
           {allRenderedChecks}
+        </div>
+        <div className="footer">
+          <p>Total Amount: {total}</p>
+          <p>Savings[20]: {total20}</p>
+          <p>Spendings[30]: {total30}</p>
+          <p>Essentials[50]: {total50}</p>
         </div>
       </div>
     );

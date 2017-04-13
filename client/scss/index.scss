@@ -7,6 +7,14 @@ body {
   background-color: #067EBD;
 }
 
+.footer {
+  height: 300px;
+  padding: 70px;
+  position: relative;
+  color: #336699;
+  background: #FED627;
+}
+
 form {
   text-align: left;
   border: 1px solid #81B2D5;
@@ -18,6 +26,7 @@ form {
 .checkInput {
   position: fixed;
   margin: 15px;
+  z-index: 5;
 }
 
 .transactionInput {
@@ -76,6 +85,7 @@ form {
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  overflow-y: auto;
 }
 
 #flip-container {
@@ -160,8 +170,6 @@ table {
       padding-left: 7px;
       height: 29px;
     }
-
-
 }
 
 .w3-center {

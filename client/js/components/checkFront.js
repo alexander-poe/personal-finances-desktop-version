@@ -15,12 +15,14 @@ class CheckFront extends Component {
   }
 
   render() {
+    let date = new Date(this.props.date).toLocaleDateString()
+    console.log(date)
     return (
       <div key={this.props.index} className="check">
         <div className="checkTop">
           <p>Total: ${this.props.amount} </p>
           <p className="right">
-            Date: {this.props.date}
+            Date: {date}
           </p>
         </div>
         <div className="checkMid">

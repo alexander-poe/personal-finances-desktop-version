@@ -9,7 +9,7 @@ class CheckInput extends Component {
       amount: '000',
       description: 'Intel',
       upload: 'photo',
-      reoccuring: false
+      reoccuring: false,
     }
     this.sendCheck = this.sendCheck.bind(this);
     this._amount = this._amount.bind(this);
