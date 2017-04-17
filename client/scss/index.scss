@@ -7,6 +7,14 @@ body {
   background-color: #067EBD;
 }
 
+h2 {
+  font-family: 'Work Sans', sans-serif;
+  color: white;
+  align-self: center;
+  padding-top: 168px;
+  margin-bottom: -63px;
+}
+
 .footer {
   height: 300px;
   padding: 70px;
@@ -17,8 +25,6 @@ body {
 
 form {
   text-align: left;
-  border: 1px solid #81B2D5;
-  border-radius: 12px;
   padding-left: 10px;
   font-size: small;
 }
@@ -27,11 +33,13 @@ form {
   position: fixed;
   margin: 15px;
   z-index: 5;
+  height: 120px;
+  padding: 11px;
 }
 
 .transactionInput {
-  width: 50%;
-  float: right;
+  width: 63%;
+  color: white;
 }
 
 #noPad {
@@ -39,10 +47,10 @@ form {
 }
 
 .check {
-  height: 264px;
+  height: 400px;
   background-color: #262228;
   padding: 50px;
-  margin-top: 23px;
+  margin-top: 74px;
   margin-bottom: 23px;
 
   p {
@@ -100,8 +108,7 @@ form {
 
 #flip-container, .front, .back {
 	width: 79%;
-	height: 300px;
-  padding-top: 50px;
+	height: 500px;
 }
 
 .flipper {
@@ -197,6 +204,9 @@ table {
   #flip-container, .front, .back {
   	width: 95%;
   	height: 300px;
+<<<<<<< HEAD
+=======
     padding-top: 50px;
+>>>>>>> origin
   }
 }
