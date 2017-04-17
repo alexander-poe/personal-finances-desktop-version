@@ -35,12 +35,19 @@ class CheckFront extends Component {
           <img
             className="right checkPhoto" src="http://www.getwordtemplates.com/wp-content/uploads/2016/01/payment-receipt-image-7.jpg"
           />
-        </div>
-        <TransactionInput
-          checkid={this.props.checkid}
-          className="transactionInput"
-        />
+          <img
+            onClick={this.transactionInputShow}
+            src="./assets/plus-symbol.png"
+            className="plusIcon"
+          />
 
+        </div>
+        {
+        this.state.transactionInput ?
+        <TransactionInput
+          className="transactionInput w3-container w3-center w3-animate-top"
+        /> : null
+        }
       </div>
     )
   }

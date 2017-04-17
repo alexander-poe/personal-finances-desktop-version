@@ -38,14 +38,19 @@ class TransactionInput extends Component {
 
   _sendTransaction(e) {
     e.preventDefault();
-    this.props.dispatch(actions.addTermTransaction(this.props.checkid, this.state.account, this.state.transaction, this.state.description, this.state.photo))
+    let idToSend = 0;
+    for (let i = 0; i < this.props.checkTerms.checkTerms.length; i++) {
+      console.log(this.props.checkTerms.checkTerms[i].checkid)
+      if (this.props.checkTerms.checkTerms[i].checkid == e.target.name) {
+        idToSend = this.props.checkTerms.checkTerms[i].id
+      }
+    }
+    this.props.dispatch(actions.addTermTransaction(idToSend, this.state.account, this.state.transaction, this.state.description, this.state.photo))
   }
 
   render() {
-    console.log(this.props.checkid, 'checkid')
     return (
       <div className={this.props.className}>
-        add transaction
         <form>
           account: <select
             onChange={this._account}
@@ -75,6 +80,7 @@ class TransactionInput extends Component {
           <br/>
           <input
             type="submit"
+            name={this.props.id}
             onClick={this._sendTransaction}
           />
         </form>
