@@ -14,7 +14,7 @@ class Header extends Component {
           >
             <img src="./assets/plus-symbol.png" className="plusIcon" />
             <p className="addCheckToggle">
-              add
+              add check
             </p>
           </div>
           <div

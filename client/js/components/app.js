@@ -54,7 +54,7 @@ class App extends Component {
     const allRenderedChecks =
          this.props.checkJoin ?
             this.props.checkJoin.checkJoin.map((check, idx) => {
-              console.log(check.datedeposited)
+              console.log(check)
               if (!check.deleted) {
                 return (
                   <div
@@ -66,6 +66,7 @@ class App extends Component {
                   		<div className="front">
                         <div key={idx} id="card">
                           <CheckFront
+                            checkid={check.checkid}
                             index={check.idx}
                             amount={check.amount}
                             date={check.datedeposited}
@@ -123,7 +124,9 @@ class App extends Component {
           switchClick={this.switcher}
         />
         {this.state.input ? <CheckInput /> : null}
+
         <div className="checkContainer">
+          <h2>Your Checks</h2>
           {allRenderedChecks}
         </div>
         <div className="footer">
@@ -133,7 +136,7 @@ class App extends Component {
           <p>Essentials[50]: {total50}</p>
         </div>
         <div className="footerDescription">
-          
+
         </div>
       </div>
     );

@@ -4,6 +4,13 @@
 body {
   background-color: #067EBD; }
 
+h2 {
+  font-family: 'Work Sans', sans-serif;
+  color: white;
+  align-self: center;
+  padding-top: 168px;
+  margin-bottom: -63px; }
+
 .footer {
   height: 300px;
   padding: 70px;
@@ -13,28 +20,28 @@ body {
 
 form {
   text-align: left;
-  border: 1px solid #81B2D5;
-  border-radius: 12px;
   padding-left: 10px;
   font-size: small; }
 
 .checkInput {
   position: fixed;
   margin: 15px;
-  z-index: 5; }
+  z-index: 5;
+  height: 120px;
+  padding: 11px; }
 
 .transactionInput {
-  width: 50%;
-  float: right; }
+  width: 63%;
+  color: white; }
 
 #noPad {
   padding: 0; }
 
 .check {
-  height: 264px;
+  height: 400px;
   background-color: #262228;
   padding: 50px;
-  margin-top: 23px;
+  margin-top: 74px;
   margin-bottom: 23px; }
   .check p {
     color: white; }
@@ -71,8 +78,7 @@ form {
 
 #flip-container, .front, .back {
   width: 79%;
-  height: 300px;
-  padding-top: 50px; }
+  height: 500px; }
 
 .flipper {
   transition: 0.9s;
@@ -143,7 +149,6 @@ table {
 @media screen and (max-width: 699px) and (min-width: 300px) {
   #flip-container, .front, .back {
     width: 95%;
-    height: 300px;
-    padding-top: 50px; } }
+    height: 300px; } }
 
 /*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */
