@@ -136,7 +136,7 @@ class App extends Component {
           <p>Essentials[50]: {total50}</p>
         </div>
         <div className="footerDescription">
-
+          
         </div>
       </div>
     );
